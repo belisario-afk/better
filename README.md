@@ -15,11 +15,19 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cupboard (TC) in Rust 
 
 ## Commands
 - **/wphammer** (chat) / **wphammer** (console): Give the wallpaper rotation hammer (requires `bettertc.admin`).
-- **/addwp `<skinid>` `<Wall|Floor|Ceiling>`** (chat/console): Register a custom wallpaper skin for the chosen category (admin only).
+- `/addwp <skinid> <Wall|Floor|Ceiling>` (chat/console): Register a custom wallpaper skin for the chosen category (admin only).
 - The TC UI uses the internal `SENDCMD` console command for menu actions (triggered by the on-TC buttons).
 
 ## Permissions
-- Core: `bettertc.admin` (admin features), `bettertc.upgrade`, `bettertc.upgrade.nocost`, `bettertc.repair`, `bettertc.repair.nocost`, `bettertc.reskin`, `bettertc.reskin.nocost`, `bettertc.wallpaper`, `bettertc.wallpaper.nocost`, `bettertc.wallpaper.custom`, `bettertc.authlist`, `bettertc.deleteauth`, `bettertc.tcskinchange`, `bettertc.tcskindeployed`, `bettertc.upskin`, `bettertc.upwall`, `bettertc.playerstatus`, `bettertc.autolock`, `bettertc.autocodelock`.
+- Core:
+  - `bettertc.admin`
+  - `bettertc.upgrade`, `bettertc.upgrade.nocost`
+  - `bettertc.repair`, `bettertc.repair.nocost`
+  - `bettertc.reskin`, `bettertc.reskin.nocost`
+  - `bettertc.wallpaper`, `bettertc.wallpaper.nocost`, `bettertc.wallpaper.custom`
+  - `bettertc.authlist`, `bettertc.deleteauth`, `bettertc.playerstatus`
+  - `bettertc.tcskinchange`, `bettertc.tcskindeployed`, `bettertc.upskin`, `bettertc.upwall`
+  - `bettertc.autolock`, `bettertc.autocodelock`
 - Frequency/Cost tiers: keys from `FrequencyUpgrade`, `FrequencyReskin`, `FrequencyRepair`, `FrequencyWallpaper`, and `CostListRepair` (e.g., `bettertc.use`, `bettertc.vip`) gate per-user cooldowns and repair cost multipliers.
 - Item entries in `itemsList` declare their own use permission (e.g., `bettertc.updefault` by default).
 

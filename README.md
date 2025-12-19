@@ -1,6 +1,6 @@
 # BetterTC
 
-BetterTC is an Oxide/Carbon plugin that augments the Tool Cabinet/Tool Cupboard (TC) in Rust with a configurable UI for upgrading, repairing, reskinning, wallpapering, and managing building authorization.
+BetterTC is an Oxide/Carbon plugin that augments the Tool Cabinet/Tool Cupboard (TC) in Rust with a configurable UI for upgrading, repairing, reskinning, wallpaper management, and building authorization.
 
 ## Overview
 - Adds TC UI buttons for upgrade/reskin/repair/auth list access.
@@ -15,7 +15,7 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cabinet/Tool Cupboard 
 
 ## Commands
 - `/wphammer` (chat) / `wphammer` (console): Give the wallpaper rotation hammer (requires `bettertc.admin`).
-- `/addwp <skinid> <category>` (Wall/Floor/Ceiling; chat/console): Register a custom wallpaper skin for the chosen category (admin only).
+- `/addwp <skinid> <category>` (category = Wall/Floor/Ceiling; chat/console): Register a custom wallpaper skin for the chosen category (admin only).
 - The TC UI uses the internal `SENDCMD` console command for menu actions (triggered by the on-TC buttons).
 
 ## Permissions
@@ -29,7 +29,7 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cabinet/Tool Cupboard 
   - `bettertc.tcskinchange`, `bettertc.tcskindeployed`, `bettertc.upskin`, `bettertc.upwall`
   - `bettertc.autolock`, `bettertc.autocodelock`
 - Frequency/Cost tiers:
-  - Cooldowns come from `FrequencyUpgrade`, `FrequencyReskin`, `FrequencyRepair`, and `FrequencyWallpaper` (e.g., `bettertc.use`, `bettertc.vip`).
+  - Cooldowns come from the `FrequencyUpgrade`, `FrequencyReskin`, `FrequencyRepair`, and `FrequencyWallpaper` dictionaries, which are keyed by permission names (e.g., `bettertc.use`, `bettertc.vip`).
   - The highest-priority permission a player has (e.g., `bettertc.vip`) selects the matching entry in each frequency dictionary; if none match, the default `bettertc.use` tier applies.
   - Repair cost multipliers come from `CostListRepair`.
 - Item entries in `itemsList` declare their own use permission (e.g., `bettertc.updefault` by default).
@@ -57,4 +57,4 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cabinet/Tool Cupboard 
 - Auto-lock uses `bettertc.autocodelock` (codelock with random code) or `bettertc.autolock` (keylock) when placing a TC.
 - Upgrade/reskin/wallpaper actions respect `onlyowner`/`onlyownerup`, raid/escape blocks (NoEscape/RaidBlock), DLC ownership (unless `allowAllSkins`), and optional team filtering.
 - External wall/gate reskinning preserves health/locks and can enforce same material grade when `samewallgrade` is true.
-- The wallpaper rotation hammer (skin ID `3494416562`, defined by the `hammerWallpaperSkin` constant and given via `/wphammer`) cycles rotation on floors/foundations, including triangles.
+- The wallpaper rotation hammer (skin ID `3494416562`, defined by the `hammerWallpaperSkin` constant) is obtained via `/wphammer` and cycles rotation on floors/foundations, including triangles.

@@ -201,6 +201,134 @@ namespace Oxide.Plugins
             Stone,
             Unknown
         }
+        
+        // Theme Presets System
+        public enum UITheme
+        {
+            Dark,
+            Pink,
+            Blue,
+            Purple,
+            Orange,
+            Teal
+        }
+        
+        private class ThemeColors
+        {
+            public string Overlay;
+            public string TitleBar;
+            public string ContentPanel;
+            public string ItemBox;
+            public string ItemBoxSelected;
+            public string ButtonPrimary;
+            public string ButtonDanger;
+            public string ButtonNavigation;
+            public string ToggleOn;
+            public string ToggleOff;
+            public string TextPrimary;
+            public string TextSecondary;
+        }
+        
+        private static readonly Dictionary<UITheme, ThemeColors> themePresets = new(){
+            [UITheme.Dark] = new ThemeColors {
+                Overlay = "0.05 0.05 0.07 0.95",
+                TitleBar = "0.08 0.10 0.12 0.98",
+                ContentPanel = "0.10 0.10 0.12 0.85",
+                ItemBox = "0.12 0.14 0.16 0.90",
+                ItemBoxSelected = "0.35 0.55 0.45 0.85",
+                ButtonPrimary = "0.20 0.60 0.35 0.85",
+                ButtonDanger = "0.85 0.25 0.20 0.90",
+                ButtonNavigation = "0.18 0.22 0.45 0.90",
+                ToggleOn = "0.20 0.50 0.30 0.90",
+                ToggleOff = "0.60 0.25 0.20 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.85 0.85 0.85 1.00"
+            },
+            [UITheme.Pink] = new ThemeColors {
+                Overlay = "0.10 0.05 0.08 0.95",
+                TitleBar = "0.20 0.08 0.15 0.98",
+                ContentPanel = "0.15 0.08 0.12 0.85",
+                ItemBox = "0.20 0.10 0.15 0.90",
+                ItemBoxSelected = "0.85 0.40 0.60 0.85",
+                ButtonPrimary = "0.85 0.35 0.55 0.85",
+                ButtonDanger = "0.90 0.20 0.30 0.90",
+                ButtonNavigation = "0.70 0.30 0.50 0.90",
+                ToggleOn = "0.85 0.40 0.60 0.90",
+                ToggleOff = "0.50 0.20 0.30 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.95 0.85 0.90 1.00"
+            },
+            [UITheme.Blue] = new ThemeColors {
+                Overlay = "0.03 0.05 0.10 0.95",
+                TitleBar = "0.05 0.10 0.20 0.98",
+                ContentPanel = "0.05 0.08 0.15 0.85",
+                ItemBox = "0.08 0.12 0.20 0.90",
+                ItemBoxSelected = "0.30 0.50 0.80 0.85",
+                ButtonPrimary = "0.25 0.50 0.85 0.85",
+                ButtonDanger = "0.85 0.25 0.25 0.90",
+                ButtonNavigation = "0.20 0.40 0.70 0.90",
+                ToggleOn = "0.30 0.55 0.85 0.90",
+                ToggleOff = "0.50 0.25 0.25 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.85 0.90 0.95 1.00"
+            },
+            [UITheme.Purple] = new ThemeColors {
+                Overlay = "0.06 0.04 0.10 0.95",
+                TitleBar = "0.12 0.08 0.20 0.98",
+                ContentPanel = "0.10 0.06 0.15 0.85",
+                ItemBox = "0.14 0.10 0.22 0.90",
+                ItemBoxSelected = "0.55 0.35 0.75 0.85",
+                ButtonPrimary = "0.55 0.30 0.80 0.85",
+                ButtonDanger = "0.85 0.25 0.30 0.90",
+                ButtonNavigation = "0.45 0.30 0.65 0.90",
+                ToggleOn = "0.60 0.35 0.80 0.90",
+                ToggleOff = "0.45 0.20 0.30 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.92 0.88 0.95 1.00"
+            },
+            [UITheme.Orange] = new ThemeColors {
+                Overlay = "0.08 0.05 0.03 0.95",
+                TitleBar = "0.18 0.10 0.05 0.98",
+                ContentPanel = "0.14 0.08 0.04 0.85",
+                ItemBox = "0.20 0.12 0.06 0.90",
+                ItemBoxSelected = "0.90 0.55 0.25 0.85",
+                ButtonPrimary = "0.90 0.50 0.15 0.85",
+                ButtonDanger = "0.90 0.25 0.20 0.90",
+                ButtonNavigation = "0.75 0.45 0.20 0.90",
+                ToggleOn = "0.90 0.55 0.20 0.90",
+                ToggleOff = "0.55 0.25 0.15 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.95 0.90 0.85 1.00"
+            },
+            [UITheme.Teal] = new ThemeColors {
+                Overlay = "0.03 0.08 0.08 0.95",
+                TitleBar = "0.05 0.15 0.15 0.98",
+                ContentPanel = "0.04 0.12 0.12 0.85",
+                ItemBox = "0.06 0.16 0.16 0.90",
+                ItemBoxSelected = "0.20 0.70 0.65 0.85",
+                ButtonPrimary = "0.15 0.70 0.60 0.85",
+                ButtonDanger = "0.85 0.30 0.25 0.90",
+                ButtonNavigation = "0.15 0.55 0.55 0.90",
+                ToggleOn = "0.20 0.70 0.60 0.90",
+                ToggleOff = "0.50 0.30 0.25 0.90",
+                TextPrimary = "1.00 1.00 1.00 0.9",
+                TextSecondary = "0.85 0.95 0.95 1.00"
+            }
+        };
+        
+        private Dictionary<ulong, UITheme> playerThemes = new Dictionary<ulong, UITheme>();
+        
+        private ThemeColors GetPlayerTheme(BasePlayer player) {
+            if (player == null) return themePresets[UITheme.Dark];
+            if (!playerThemes.TryGetValue(player.userID, out var theme)) {
+                theme = UITheme.Dark;
+            }
+            return themePresets[theme];
+        }
+        
+        private const string theme_0 = "theme.base";
+        private const string theme_1 = "theme.windows";
+        private const string theme_2 = "theme.item";
         #endregion
         
         #region Hooks
@@ -1777,6 +1905,25 @@ namespace Oxide.Plugins
                     CuiHelper.DestroyUi(player, buttons_0);
                     break;
                 }
+                case "THEME":
+                {
+                    var page = int.Parse(arg.Args[1]);
+                    ShowMenuTheme(player, cup, page);
+                    CuiHelper.DestroyUi(player, upgrade_0);
+                    break;
+                }
+                case "THEMESELECT":
+                {
+                    var themeIndex = int.Parse(arg.Args[1]);
+                    var page = int.Parse(arg.Args[2]);
+                    if (Enum.IsDefined(typeof(UITheme), themeIndex)) {
+                        playerThemes[player.userID] = (UITheme)themeIndex;
+                        SaveData();
+                    }
+                    CuiHelper.DestroyUi(player, theme_0);
+                    ShowMenu(player, cup, page);
+                    break;
+                }
                 case "COLOR":
                 {
                 	CuiHelper.DestroyUi(player, upgrade_0);
@@ -2120,6 +2267,7 @@ namespace Oxide.Plugins
         #region CUI
         private void ShowMenu(BasePlayer player, BuildingPrivlidge cup, int page = 0){
             CuiHelper.DestroyUi(player, upgrade_0);
+            var theme = GetPlayerTheme(player);
             
             if (TiersMode != null) {
                 object maxGradeTierObject = TiersMode.Call("GetMaxGradeBuild");
@@ -2138,7 +2286,7 @@ namespace Oxide.Plugins
                 Components = {
                     new CuiImageComponent {
                         FadeIn = 0.2f,
-                        Color = "0.05 0.05 0.07 0.95",
+                        Color = theme.Overlay,
                         Material = "assets/content/ui/uibackgroundblur-ingamemenu.mat"
                     },
                     new CuiRectTransformComponent {
@@ -2157,7 +2305,7 @@ namespace Oxide.Plugins
                 Components = {
                     new CuiImageComponent {
                         FadeIn = 0.2f,
-                        Color = "0.08 0.10 0.12 0.98",
+                        Color = theme.TitleBar,
                         Material = "assets/content/ui/namefontmaterial.mat"
                     },
                     new CuiRectTransformComponent {
@@ -2169,8 +2317,8 @@ namespace Oxide.Plugins
                 }
             });
             
-            UI.Label(ref container, "title", Languaje("title1", player.UserIDString), 16, "0.022 0.05", "0.8 0.95", "1.00 1.00 1.00 0.9", TextAnchor.MiddleLeft, true);
-            UI.Button(ref container, "title", "0.85 0.25 0.20 0.90", Languaje("CLOSE", player.UserIDString), 13, "0.89 0", "0.999 0.982", "SENDCMD CLOSE");
+            UI.Label(ref container, "title", Languaje("title1", player.UserIDString), 16, "0.022 0.05", "0.8 0.95", theme.TextPrimary, TextAnchor.MiddleLeft, true);
+            UI.Button(ref container, "title", theme.ButtonDanger, Languaje("CLOSE", player.UserIDString), 13, "0.89 0", "0.999 0.982", "SENDCMD CLOSE");
             
             container.Add(new CuiElement {
                 Name = upgrade_1,
@@ -2178,7 +2326,7 @@ namespace Oxide.Plugins
                 Components = {
                     new CuiImageComponent {
                         FadeIn = 0.2f,
-                        Color = "0.10 0.10 0.12 0.85",
+                        Color = theme.ContentPanel,
                         Material = "assets/content/ui/namefontmaterial.mat"
                     },
                     new CuiRectTransformComponent {
@@ -2223,7 +2371,7 @@ namespace Oxide.Plugins
                     Parent = upgrade_1,
                     Components = {
                         new CuiImageComponent {
-                            Color = "0.12 0.14 0.16 0.90",
+                            Color = theme.ItemBox,
                             Material = "assets/content/ui/namefontmaterial.mat"
                         },
                         new CuiRectTransformComponent {
@@ -2240,7 +2388,7 @@ namespace Oxide.Plugins
                     Parent = upgrade_1,
                     Components = {
                         new CuiImageComponent {
-                            Color = "0.14 0.16 0.18 0.92",
+                            Color = theme.ItemBox,
                             Material = "assets/content/ui/namefontmaterial.mat"
                         },
                         new CuiRectTransformComponent {
@@ -2285,7 +2433,7 @@ namespace Oxide.Plugins
 
                 if (unlock) UI.Image(ref container, upgrade_3, GetImageLibrary("lock5"), "0.1 0.1", "0.9 0.9");
                 if (BuildingCupboard[cup].work && BuildingCupboard[cup].id == ID) UI.Image(ref container, upgrade_3, GetImageLibrary("upgrade2"), "0.1 0.1", "0.9 0.9");
-				UI.Label(ref container, upgrade_2, list_name, 12, "0.05 0", "0.55 0.15", "0.70 0.70 0.70 1.00", TextAnchor.MiddleLeft, true);
+				UI.Label(ref container, upgrade_2, list_name, 12, "0.05 0", "0.55 0.15", theme.TextSecondary, TextAnchor.MiddleLeft, true);
                 UI.Panel(ref container, upgrade_3, "0.40 0.40 0.40 0.30", "0.82 0.82", "0.95 0.95");
                 UI.Image3(ref container, upgrade_3, "assets/icons/info.png", "1 1 1 0.6", "0.83 0.835", "0.93 0.935", false);
                 UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, "0.82 0.82", "0.95 0.95", $"SENDCMD COSTUPGRADE {ID} {list_entry.grade} {list_entry.skinid} {page}");
@@ -2295,7 +2443,7 @@ namespace Oxide.Plugins
                 bool hasSkin = IsSkinAllowed(player, list_entry.skinid);
 				bool colour = list_entry.color && canReskin;
                 if (colour && hasSkin){
-                	UI.Panel(ref container, upgrade_3, "0.20 0.50 0.35 0.70", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
+                	UI.Panel(ref container, upgrade_3, theme.ButtonPrimary, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
                     UI.Image(ref container, upgrade_3, GetImageLibrary("color_" + BuildingCupboard[cup].colour), $"0.83 {yMin + 0.01f}", $"0.94 {yMin + 0.12f}");
                     UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}", $"SENDCMD COLOR {ID} {list_entry.grade} {list_entry.skinid} {BuildingCupboard[cup].colour} {page}");
                     yMin -= yStep;
@@ -2303,7 +2451,7 @@ namespace Oxide.Plugins
 
                 if (config.reskin && canReskin && hasSkin){
                     bool reskin = BuildingCupboard[cup].reskin && BuildingCupboard[cup].id == ID;
-                    UI.Panel(ref container, upgrade_3, reskin ? "0.85 0.25 0.20 0.90" : "0.25 0.55 0.35 0.50", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
+                    UI.Panel(ref container, upgrade_3, reskin ? theme.ButtonDanger : theme.ButtonPrimary, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
                     UI.Image2(ref container, upgrade_3, -596876839, 0, $"0.825 {yMin + 0.005f}", $"0.94 {yMin + 0.115f}");
                     UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}", canReskin ? $"SENDCMD RESKIN {ID} {list_entry.grade} {list_entry.skinid} {page} {list_entry.color}" : $"SENDCMD ERROR");
                     yMin -= yStep;
@@ -2311,7 +2459,7 @@ namespace Oxide.Plugins
                 
                 if(config.wallpaper && !cup.HasParent()){
                     bool wallpaper = BuildingCupboard[cup].workwallpaper != null && BuildingCupboard[cup].id == ID;
-                    UI.Panel(ref container, upgrade_3, wallpaper ? "0.85 0.25 0.20 0.90" : "0.25 0.55 0.35 0.50", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
+                    UI.Panel(ref container, upgrade_3, wallpaper ? theme.ButtonDanger : theme.ButtonPrimary, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
                     UI.Image2(ref container, upgrade_3, 1629564540, 0, $"0.825 {yMin + 0.005f}", $"0.945 {yMin + 0.12f}");
                     UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}", canWallpaper ? $"SENDCMD WALLPAPER {ID} {list_entry.grade} {list_entry.skinid} {page}" : $"SENDCMD ERROR");
                     yMin -= yStep;
@@ -2319,29 +2467,29 @@ namespace Oxide.Plugins
                 
                 if (config.reskinwall && list_entry.wall != -1 && (list_entry.itemID2 == -2099697608 || IsSkinAllowed(player, list_entry.wall))){
                     bool wall = BuildingCupboard[cup].upwall && BuildingCupboard[cup].id == ID;
-                    UI.Panel(ref container, upgrade_3, wall ? "0.85 0.25 0.20 0.90" : "0.25 0.55 0.35 0.50", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
+                    UI.Panel(ref container, upgrade_3, wall ? theme.ButtonDanger : theme.ButtonPrimary, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
                     UI.Image2(ref container, upgrade_3, list_entry.itemID2, 0, $"0.825 {yMin + 0.005f}", $"0.945 {yMin + 0.12f}");
                     UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}", canWallpaper ? $"SENDCMD UPWALL {ID} {list_entry.grade} {list_entry.wall} {page}" : $"SENDCMD ERROR");
                     yMin -= yStep;
                 }
                 
                 if (!hasSkin){
-                    UI.Button(ref container, upgrade_2, "0.15 0.15 0.18 0.85", "NO DLC", 10, "0.6 0", "0.993 0.15", "SENDCMD NODLC");
+                    UI.Button(ref container, upgrade_2, theme.ItemBox, "NO DLC", 10, "0.6 0", "0.993 0.15", "SENDCMD NODLC");
                 } else if(list_entry.disablebarges && cup.HasParent()){
-                	UI.Button(ref container, upgrade_2, "0.15 0.15 0.18 0.85", Languaje("DisableBarges", player.UserIDString), 10, "0.6 0", "0.993 0.15", "SENDCMD DISABLEBARGES");
+                	UI.Button(ref container, upgrade_2, theme.ItemBox, Languaje("DisableBarges", player.UserIDString), 10, "0.6 0", "0.993 0.15", "SENDCMD DISABLEBARGES");
                 }
                 else if (canUpgrade && !unlock){
                     string buttonColor, buttonText, command;
                     if (unlock){
-                        buttonColor = "0.15 0.15 0.18 0.90";
+                        buttonColor = theme.ItemBox;
                         buttonText = Languaje("LOCK", player.UserIDString);
                         command = "SENDCMD ERROR";
                     } else if (up) {
-                        buttonColor = "0.85 0.25 0.20 0.90";
+                        buttonColor = theme.ButtonDanger;
                         buttonText = Languaje("STOP", player.UserIDString);
                         command = $"SENDCMD STOP {ID} {list_entry.grade} {list_entry.skinid} {page}";
                     } else {
-                        buttonColor = "0.20 0.60 0.35 0.85";
+                        buttonColor = theme.ButtonPrimary;
                         buttonText = Languaje("UPGRADE", player.UserIDString);
                         command = list_entry.color
                             ? $"SENDCMD COLOR {ID} {list_entry.grade} {list_entry.skinid} {BuildingCupboard[cup].colour} {page}"
@@ -2349,7 +2497,7 @@ namespace Oxide.Plugins
                     }
                     UI.Button(ref container, upgrade_2, buttonColor, buttonText, 10, "0.6 0", "0.993 0.15", command);
                 } else if (canReskin){
-                    UI.Button(ref container, upgrade_2, "0.20 0.60 0.35 0.85", Languaje("Reskin", player.UserIDString), 10, "0.6 0", "0.993 0.15", $"SENDCMD RESKIN {ID} {list_entry.grade} {list_entry.skinid} {page} {list_entry.color}");
+                    UI.Button(ref container, upgrade_2, theme.ButtonPrimary, Languaje("Reskin", player.UserIDString), 10, "0.6 0", "0.993 0.15", $"SENDCMD RESKIN {ID} {list_entry.grade} {list_entry.skinid} {page} {list_entry.color}");
                 }
  
                 //if (HasPermission(player.UserIDString, permupgrade)) UI.Button(ref container, upgrade_2, unlock ? "0.20 0.20 0.20 0.80" : up ? "0.90 0.20 0.20 0.50" : "0.80 1.00 0.50 0.10", Languaje(unlock ? "LOCK" : up ? "STOP" : "UPGRADE", player.UserIDString), 10, "0.6 0", "0.993 0.15", up ? $"SENDCMD STOP {ID} {list_entry.grade} {list_entry.skinid} {page} {list_entry.color}" : unlock ? $"SENDCMD ERROR" : list_entry.color ? $"SENDCMD COLOR {ID} {list_entry.grade} {list_entry.skinid} {BuildingCupboard[cup].colour} {page}" : $"SENDCMD UPGRADE {ID} {list_entry.grade} {list_entry.skinid} {page} {list_entry.color}");
@@ -2359,31 +2507,34 @@ namespace Oxide.Plugins
             }
             
             if (config.itemsList.Count > 12 || page != 0){
-                UI.Button(ref container, upgrade_1, page > 0 ? "0.18 0.22 0.45 0.90" : "0.20 0.20 0.22 0.50", Languaje("Back", player.UserIDString), 14, "0.3 0.05", "0.49 0.12", page > 0 ? $"SENDCMD PAGE {page - 1}": "");
-                UI.Button(ref container, upgrade_1, GetBuildingItems(player).Skip(12 * (page + 1)).Count() > 0 ? "0.18 0.22 0.45 0.90" : "0.20 0.20 0.22 0.50"  , Languaje("Next", player.UserIDString), 14, "0.51 0.05", "0.7 0.12", GetBuildingItems(player).Skip(12 * (page + 1)).Count() > 0 ? $"SENDCMD PAGE {page + 1}": $"");
+                UI.Button(ref container, upgrade_1, page > 0 ? theme.ButtonNavigation : theme.ItemBox, Languaje("Back", player.UserIDString), 14, "0.3 0.05", "0.49 0.12", page > 0 ? $"SENDCMD PAGE {page - 1}": "");
+                UI.Button(ref container, upgrade_1, GetBuildingItems(player).Skip(12 * (page + 1)).Count() > 0 ? theme.ButtonNavigation : theme.ItemBox  , Languaje("Next", player.UserIDString), 14, "0.51 0.05", "0.7 0.12", GetBuildingItems(player).Skip(12 * (page + 1)).Count() > 0 ? $"SENDCMD PAGE {page + 1}": $"");
             }
 
-            if (TCLevels != null) UI.Button(ref container, upgrade_1, "0.20 0.50 0.30 0.90", "TC Levels Upgrades", 14, "0.82 0.05", "0.976 0.12", $"tclevels.show {cup.net.ID.Value}");
+            if (TCLevels != null) UI.Button(ref container, upgrade_1, theme.ToggleOn, "TC Levels Upgrades", 14, "0.82 0.05", "0.976 0.12", $"tclevels.show {cup.net.ID.Value}");
             
             if (config.playfx){
-                UI.Panel(ref container, upgrade_1, "0.15 0.15 0.18 0.60", "0.02 0.06", "0.043 0.11");
-                UI.Button(ref container, upgrade_1, BuildingCupboard[cup].effect ? "0.20 0.50 0.30 0.90" : "0.60 0.25 0.20 0.90", "", 10, "0.023 0.065", "0.040 0.102", $"SENDCMD EFFECT {page}");
-                UI.Label(ref container, upgrade_1, Languaje(BuildingCupboard[cup].effect ? "EffectON" : "EffectOFF", player.UserIDString), 10, "0.05 0.06", "0.3 0.11", "0.85 0.85 0.85 1.00", TextAnchor.MiddleLeft, true);
+                UI.Panel(ref container, upgrade_1, theme.ItemBox, "0.02 0.06", "0.043 0.11");
+                UI.Button(ref container, upgrade_1, BuildingCupboard[cup].effect ? theme.ToggleOn : theme.ToggleOff, "", 10, "0.023 0.065", "0.040 0.102", $"SENDCMD EFFECT {page}");
+                UI.Label(ref container, upgrade_1, Languaje(BuildingCupboard[cup].effect ? "EffectON" : "EffectOFF", player.UserIDString), 10, "0.05 0.06", "0.3 0.11", theme.TextSecondary, TextAnchor.MiddleLeft, true);
             }
 
             if (config.downgrade){
-                UI.Panel(ref container, upgrade_1, "0.15 0.15 0.18 0.60", "0.12 0.06", "0.143 0.11");
-                UI.Button(ref container, upgrade_1, BuildingCupboard[cup].downgrade ? "0.20 0.50 0.30 0.90" : "0.60 0.25 0.20 0.90", "", 10, "0.123 0.065", "0.140 0.102", $"SENDCMD DOWNGRADE {page}");
-                UI.Label(ref container, upgrade_1, Languaje(BuildingCupboard[cup].downgrade ? "DowngradeON" : "DowngradeOFF", player.UserIDString), 10, "0.15 0.06", "0.4 0.11", "0.85 0.85 0.85 1.00", TextAnchor.MiddleLeft, true);
+                UI.Panel(ref container, upgrade_1, theme.ItemBox, "0.12 0.06", "0.143 0.11");
+                UI.Button(ref container, upgrade_1, BuildingCupboard[cup].downgrade ? theme.ToggleOn : theme.ToggleOff, "", 10, "0.123 0.065", "0.140 0.102", $"SENDCMD DOWNGRADE {page}");
+                UI.Label(ref container, upgrade_1, Languaje(BuildingCupboard[cup].downgrade ? "DowngradeON" : "DowngradeOFF", player.UserIDString), 10, "0.15 0.06", "0.4 0.11", theme.TextSecondary, TextAnchor.MiddleLeft, true);
             }
 
+            // Theme button
+            UI.Button(ref container, upgrade_1, theme.ButtonNavigation, Languaje("Theme", player.UserIDString), 14, "0.22 0.05", "0.28 0.12", $"SENDCMD THEME {page}");
+
             if(HasPermission(player.UserIDString, permtcskin)){
-                UI.Button(ref container, upgrade_1, "0.20 0.60 0.35 0.85", Languaje("TCSkin", player.UserIDString), 14, "0.42 0.05", "0.58 0.12", $"SENDCMD TCSKIN {page}");
+                UI.Button(ref container, upgrade_1, theme.ButtonPrimary, Languaje("TCSkin", player.UserIDString), 14, "0.42 0.05", "0.58 0.12", $"SENDCMD TCSKIN {page}");
                 UI.Image2(ref container, upgrade_1, 1488606552, 0, "0.43 0.065", "0.452 0.11");
             }
 
             if (HasPermission(player.UserIDString, permadmin)){
-                UI.Button(ref container, upgrade_1, "0.18 0.22 0.45 0.90", Languaje("CheckUpdate", player.UserIDString), 14, "0.594 0.05", "0.76 0.12", $"SENDCMD REFRESH {page}");
+                UI.Button(ref container, upgrade_1, theme.ButtonNavigation, Languaje("CheckUpdate", player.UserIDString), 14, "0.594 0.05", "0.76 0.12", $"SENDCMD REFRESH {page}");
                 UI.Image3(ref container, upgrade_1, "assets/icons/picked up.png", "1 1 1 0.6", "0.604 0.0696", "0.622 0.106", false);
             }
             CuiHelper.AddUi(player, container);
@@ -2855,6 +3006,147 @@ namespace Oxide.Plugins
                 UI.Button(ref container, tcskin_3, "0 0 0 0", "", 10, "0 0", "1 1", $"SENDCMD TCSKINSELECT {meta.ShortName} {page}");
 
                 list_x += list_sizeX + 10;
+                e++;
+            }
+
+            CuiHelper.AddUi(player, container);
+        }
+
+        private void ShowMenuTheme(BasePlayer player, BuildingPrivlidge cup, int page = 0){
+            CuiHelper.DestroyUi(player, theme_0);
+            var theme = GetPlayerTheme(player);
+            var currentTheme = playerThemes.TryGetValue(player.userID, out var t) ? t : UITheme.Dark;
+            var container = new CuiElementContainer();
+            
+            container.Add(new CuiElement {
+                Name = theme_0,
+                Parent = "OverlayNonScaled",
+                Components = {
+                    new CuiImageComponent {
+                        FadeIn = 0.2f,
+                        Color = theme.Overlay,
+                        Material = "assets/content/ui/uibackgroundblur-ingamemenu.mat"
+                    },
+                    new CuiRectTransformComponent {
+                        AnchorMin = "0.5 0.5",
+                        AnchorMax = "0.5 0.5",
+                        OffsetMin = "-1000 -800",
+                        OffsetMax = "1000 800"
+                    },
+                    new CuiNeedsCursorComponent()
+                }
+            });
+
+            container.Add(new CuiElement {
+                Name = "themetitle",
+                Parent = theme_0,
+                Components = {
+                    new CuiImageComponent {
+                        FadeIn = 0.2f,
+                        Color = theme.TitleBar,
+                        Material = "assets/content/ui/namefontmaterial.mat"
+                    },
+                    new CuiRectTransformComponent {
+                        AnchorMin = "0.5 0.5",
+                        AnchorMax = "0.5 0.5",
+                        OffsetMin = "-300 180",
+                        OffsetMax = "300 210"
+                    }
+                }
+            });
+            
+            UI.Label(ref container, "themetitle", Languaje("title6", player.UserIDString), 16, "0.03 0.05", "0.8 0.95", theme.TextPrimary, TextAnchor.MiddleLeft, true);
+            UI.Button(ref container, "themetitle", theme.ButtonDanger, Languaje("CLOSE", player.UserIDString), 13, "0.775 0", "0.999 0.982", $"SENDCMD CLOSE2 {page}");
+            
+            container.Add(new CuiElement {
+                Name = theme_1,
+                Parent = theme_0,
+                Components = {
+                    new CuiImageComponent {
+                        FadeIn = 0.2f,
+                        Color = theme.ContentPanel,
+                        Material = "assets/content/ui/namefontmaterial.mat"
+                    },
+                    new CuiRectTransformComponent {
+                        AnchorMin = "0.5 0.5",
+                        AnchorMax = "0.5 0.5",
+                        OffsetMin = "-300 -100",
+                        OffsetMax = "300 180"
+                    }
+                }
+            });
+
+            var themeNames = new Dictionary<UITheme, string> {
+                [UITheme.Dark] = "ThemeDark",
+                [UITheme.Pink] = "ThemePink",
+                [UITheme.Blue] = "ThemeBlue",
+                [UITheme.Purple] = "ThemePurple",
+                [UITheme.Orange] = "ThemeOrange",
+                [UITheme.Teal] = "ThemeTeal"
+            };
+
+            var e = 0;
+            var list_sizeX = 150;
+            var list_sizeY = 80;
+            var list_startX = -270;
+            var list_startY = 130;
+            var list_x = list_startX;
+            var list_y = list_startY;
+
+            foreach (UITheme themeOption in Enum.GetValues(typeof(UITheme)))
+            {
+                if (e != 0 && e % 3 == 0)
+                {
+                    list_x = list_startX;
+                    list_y -= list_sizeY + 20;
+                }
+
+                var previewTheme = themePresets[themeOption];
+                bool isSelected = currentTheme == themeOption;
+
+                container.Add(new CuiElement {
+                    Name = theme_2,
+                    Parent = theme_1,
+                    Components = {
+                        new CuiImageComponent {
+                            Color = isSelected ? previewTheme.ItemBoxSelected : previewTheme.ItemBox,
+                            Material = "assets/content/ui/namefontmaterial.mat"
+                        },
+                        new CuiRectTransformComponent {
+                            AnchorMin = "0.5 0.5",
+                            AnchorMax = "0.5 0.5",
+                            OffsetMin = $"{list_x} {list_y - list_sizeY}",
+                            OffsetMax = $"{list_x + list_sizeX} {list_y}"
+                        }
+                    }
+                });
+
+                // Theme color preview bar
+                container.Add(new CuiElement {
+                    Name = CuiHelper.GetGuid(),
+                    Parent = theme_2,
+                    Components = {
+                        new CuiImageComponent {
+                            Color = previewTheme.ButtonPrimary,
+                            Material = "assets/content/ui/namefontmaterial.mat"
+                        },
+                        new CuiRectTransformComponent {
+                            AnchorMin = "0.05 0.65",
+                            AnchorMax = "0.95 0.85"
+                        }
+                    }
+                });
+
+                string themeName = themeNames.TryGetValue(themeOption, out var name) ? Languaje(name, player.UserIDString) : themeOption.ToString();
+                UI.Label(ref container, theme_2, themeName, 14, "0 0.1", "1 0.55", previewTheme.TextPrimary, TextAnchor.MiddleCenter, true);
+                
+                if (isSelected) {
+                    UI.Label(ref container, theme_2, "✓", 16, "0.8 0.6", "0.98 0.95", previewTheme.TextPrimary, TextAnchor.MiddleCenter, true);
+                }
+
+                UI.Button(ref container, theme_2, "0 0 0 0", "", 10, "0 0", "1 1", $"SENDCMD THEMESELECT {(int)themeOption} {page}");
+
+                list_x += list_sizeX + 20;
                 e++;
             }
 
@@ -3460,12 +3752,22 @@ namespace Oxide.Plugins
         {
         	public string Version;
             public Dictionary<string, HashSet<ulong>> CustomWallpapers = new Dictionary<string, HashSet<ulong>>();
+            public Dictionary<ulong, int> PlayerThemes = new Dictionary<ulong, int>();
         }
 
 		private BetterTCData tcData;
 
         private void LoadData(){
             tcData = Interface.Oxide.DataFileSystem.ReadObject<BetterTCData>("BetterTC") ?? new BetterTCData();
+            
+            // Load player themes from data
+            if (tcData.PlayerThemes != null) {
+                foreach (var kvp in tcData.PlayerThemes) {
+                    if (Enum.IsDefined(typeof(UITheme), kvp.Value)) {
+                        playerThemes[kvp.Key] = (UITheme)kvp.Value;
+                    }
+                }
+            }
 
             string currentVersion = this.Version.ToString();
             string oldVersion = tcData.Version ?? "0.0.0";
@@ -3496,6 +3798,11 @@ namespace Oxide.Plugins
         }
 
         private void SaveData(){
+            // Save player themes to data
+            tcData.PlayerThemes = new Dictionary<ulong, int>();
+            foreach (var kvp in playerThemes) {
+                tcData.PlayerThemes[kvp.Key] = (int)kvp.Value;
+            }
             Interface.Oxide.DataFileSystem.WriteObject("BetterTC", tcData);
         }
         #endregion
@@ -3563,7 +3870,15 @@ namespace Oxide.Plugins
                 ["AddWP_AlreadyExists"] = "That skin is already registered.",
                 ["RepairBlockedRecentDamage"] = "Could not repair: {0} due to recent damage. Try again in {1} seconds.",
                 ["NoDLCPurchased"] = "You don't have this DLC purchased. Facepunch's server policy no longer allows you to use DLC you haven't purchased.",
-                ["DisableBarges"] = "Not available for Barges"
+                ["DisableBarges"] = "Not available for Barges",
+                ["title6"] = "SELECT UI THEME",
+                ["Theme"] = "THEME",
+                ["ThemeDark"] = "Dark",
+                ["ThemePink"] = "Pink",
+                ["ThemeBlue"] = "Blue",
+                ["ThemePurple"] = "Purple",
+                ["ThemeOrange"] = "Orange",
+                ["ThemeTeal"] = "Teal"
             }, this);
         }
 

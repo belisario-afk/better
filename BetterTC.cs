@@ -2240,7 +2240,7 @@ namespace Oxide.Plugins
                     Parent = upgrade_1,
                     Components = {
                         new CuiImageComponent {
-                            Color = "0.15 0.18 0.20 0.95",
+                            Color = "0.14 0.16 0.18 0.92",
                             Material = "assets/content/ui/namefontmaterial.mat"
                         },
                         new CuiRectTransformComponent {
@@ -2295,7 +2295,7 @@ namespace Oxide.Plugins
                 bool hasSkin = IsSkinAllowed(player, list_entry.skinid);
 				bool colour = list_entry.color && canReskin;
                 if (colour && hasSkin){
-                	UI.Panel(ref container, upgrade_3, "0.25 0.55 0.35 0.50", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
+                	UI.Panel(ref container, upgrade_3, "0.20 0.50 0.35 0.70", $"0.82 {yMin}", $"0.95 {yMin + 0.13f}");
                     UI.Image(ref container, upgrade_3, GetImageLibrary("color_" + BuildingCupboard[cup].colour), $"0.83 {yMin + 0.01f}", $"0.94 {yMin + 0.12f}");
                     UI.Button(ref container, upgrade_3, "0 0 0 0", "", 10, $"0.82 {yMin}", $"0.95 {yMin + 0.13f}", $"SENDCMD COLOR {ID} {list_entry.grade} {list_entry.skinid} {BuildingCupboard[cup].colour} {page}");
                     yMin -= yStep;
@@ -2976,7 +2976,7 @@ namespace Oxide.Plugins
 
                 UI.Label(ref container, authlist_3, playerName, 13, (showsteamid) ? "0.12 0.40" : "0.12 0.05", "0.8 0.95", "1.00 1.00 1.00 0.9", TextAnchor.MiddleLeft, true);
 
-                if (showsteamid) UI.Label(ref container, authlist_3, userId.ToString(), 10, "0.12 0.05", "0.8 0.50", "0.75 0.75 0.75 0.7", TextAnchor.MiddleLeft);
+                if (showsteamid) UI.Label(ref container, authlist_3, userId.ToString(), 10, "0.12 0.05", "0.8 0.50", "0.70 0.70 0.70 0.8", TextAnchor.MiddleLeft);
                 if (HasPermission(player.UserIDString, permdelauth)) UI.Button(ref container, authlist_3, "0.85 0.25 0.20 0.90", "REMOVE", 10, "0.8 0", "1 0.98", $"SENDCMD REMOVEAUTH {page} {cup} {userId}");
 
                 UI.Image(ref container, authlist_3, userId.ToString(), "0 0", "0.1 0.95");

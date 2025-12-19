@@ -15,7 +15,7 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cupboard (TC) in Rust 
 
 ## Commands
 - **/wphammer** (chat) / **wphammer** (console): Give the wallpaper rotation hammer (requires `bettertc.admin`).
-- **/addwp &lt;skinid&gt; &lt;Wall|Floor|Ceiling&gt;** (chat/console): Register a custom wallpaper skin for the chosen category (admin only).
+- **/addwp `<skinid>` `<Wall|Floor|Ceiling>`** (chat/console): Register a custom wallpaper skin for the chosen category (admin only).
 - The TC UI uses the internal `SENDCMD` console command for menu actions (triggered by the on-TC buttons).
 
 ## Permissions
@@ -46,4 +46,3 @@ BetterTC is an Oxide/Carbon plugin that augments the Tool Cupboard (TC) in Rust 
 - Upgrade/reskin/wallpaper actions respect `onlyowner`/`onlyownerup`, raid/escape blocks (NoEscape/RaidBlock), DLC ownership (unless `allowAllSkins`), and optional team filtering.
 - External wall/gate reskinning preserves health/locks and can enforce same material grade when `samewallgrade` is true.
 - The wallpaper rotation hammer cycles rotation on floors/foundations (including triangles) when the special hammer skin is equipped.
-

@@ -2193,6 +2193,7 @@ namespace Oxide.Plugins
                 	var page = int.Parse(arg.Args[1]);
                     CuiHelper.DestroyUi(player, color_0);
                     CuiHelper.DestroyUi(player, tcskin_0);
+                    CuiHelper.DestroyUi(player, theme_0);
                     ShowMenu(player, cup, page);
                     break;
                 }
